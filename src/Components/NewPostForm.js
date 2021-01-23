@@ -49,13 +49,13 @@ function NewPostForm(props) {
 
       {props.title
         ? null
-        : props.validation && <ValidationText>Input nedded</ValidationText>}
+        : props.validation && <ValidationText>Input needed</ValidationText>}
       <br />
       <br />
       <MarkedDownInput handleBody={props.handleBody} body={props.body} />
       {props.body
         ? null
-        : props.validation && <ValidationText>Input nedded</ValidationText>}
+        : props.validation && <ValidationText>Input needed</ValidationText>}
 
       <Button onClick={props.handleCreate}>Publish</Button>
     </Main>
