@@ -10,7 +10,7 @@ const Main = styled.div`
 const Card = styled.div`
   border: 1px solid gray;
   padding: 10px;
-  margin: 10px;
+  margin: 10px;border-radius: 4px;
 `;
 
 const EmptyPost = styled.p`
