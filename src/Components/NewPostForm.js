@@ -22,18 +22,6 @@ const Input = styled.input`
     outline: none;
   }
 `;
-const TextArea = styled.input`
-  border: 1px solid gainsboro;
-  width: 100%;
-  height: 80px;
-  margin: 10px 0px;
-  &&:focus {
-    outline: none;
-  }
-  &&:active {
-    outline: none;
-  }
-`;
 
 const Button = styled.div`
   display: flex;

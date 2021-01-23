@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import SearchInpuBox from "./Components/SearchInputBox";
 import styled from "styled-components";
@@ -6,7 +5,7 @@ import { useMemo, useReducer, useState } from "react";
 import NewAndPublishedButton from "./Components/NewAndPublishedButton";
 import Published from "./Components/PublishedPost";
 import NewPostForm from "./Components/NewPostForm";
-import { act } from "react-dom/test-utils";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
