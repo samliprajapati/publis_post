@@ -20,6 +20,7 @@ const Button = styled.div`
   cursor: pointer;
   height: 35px;
   justify-content: center;
+  border-radius: 4px;
 `;
 
 function NewAndPublishedButton(props) {
