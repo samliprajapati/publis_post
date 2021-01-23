@@ -6,7 +6,7 @@ const TextArea = styled.textarea`
   width: 100%;
   height: 120px;
   padding: 4px;
-
+border-radius: 4px;
   &&:focus {
     outline: none;
   }
