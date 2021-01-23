@@ -3,25 +3,31 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 const Main = styled.div`
   height: 50vh;
-  width: 80%;
+  width: 50%;
   overflow: auto;
 `;
 
 const Card = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 100%;
-  margin: 10px 0px;
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px;
 `;
-const Container = styled.div`
-  padding: 10px 100px;
-  @media only screen and (max-width: 600px) {
-    padding: 10px 10px;
-  }
-`;
+
 const EmptyPost = styled.p`
   display: flex;
   justify-content: center;
+`;
+const Title = styled.p`
+  color: gray;
+  margin: 0px;
+  font-size: 22px;
+  font-family: Roboto;
+`;
+const Body = styled.p`
+  color: gray;
+  margin: 0px;
+  font-size: 18px;
+  font-family: Roboto;
 `;
 
 function Published(props) {
@@ -29,20 +35,19 @@ function Published(props) {
   return (
     <Main>
       {!props.state.length ? (
-        <EmptyPost>Data Not Yet Published.</EmptyPost>
+        <EmptyPost>Data Not yet published.</EmptyPost>
       ) : (
         <>
           {props.state.map((item) => {
             console.log(item.body);
             return (
               <Card>
-                <Container>
+                {" "}
+                <Title>{item.title}</Title>
+                <Body>
                   {" "}
-                  <h2>
-                    <b>{item.title}</b>
-                  </h2>
                   <ReactMarkdown source={item.body} />
-                </Container>
+                </Body>
               </Card>
             );
           })}

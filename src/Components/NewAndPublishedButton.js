@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 const Main = styled.div`
   display: flex;
-  border: 1px solid gainsboro;
+
   justify-content: space-between;
   width: 40%;
-  margin: 30px;
+
   @media only screen and (max-width: 600px) {
     width: 100%;
+    margin: 0px 10px;
   }
 `;
 const Button = styled.div`
@@ -19,7 +20,6 @@ const Button = styled.div`
   cursor: pointer;
   height: 35px;
   justify-content: center;
-  border: 1px solid gainsboro;
 `;
 
 function NewAndPublishedButton(props) {

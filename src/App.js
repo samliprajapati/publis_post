@@ -11,8 +11,20 @@ const Container = styled.div`
   justify-content: center;
 `;
 const MainContainer = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid gainsboro;
+  border-radius: 8px;
   margin: 50px;
+  @media only screen and (max-width: 600px) {
+    margin: 0px;
+    height: 100vh;
+  }
+`;
+const SuccessMessage = styled.p`
+  color: #4dab2e;
+  text-align: center;
+  margin: 0px;
+  border: 1px solid #4dab2e;
+  width: 50%;
 `;
 
 const initialState = [];
@@ -29,9 +41,10 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [inputData, setInputData] = useState("");
   const [ButtonData, setbuttonData] = useState("Published");
-  const [titleData, setTitle] = useState("");
-  const [bodyData, setBody] = useState("");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [validation, setValidation] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   function handleInputChange(e) {
     setInputData(e.target.value);
@@ -50,22 +63,26 @@ function App() {
     setbuttonData(data);
   }
 
-  function handlePost() {
-    if (titleData === "" && bodyData === "") {
+  function handleCreate() {
+    if (title === "" && body === "") {
       setValidation(true);
     } else {
+      debugger;
       dispatch({
         type: "add",
-        payload: { title: titleData, body: bodyData },
+        payload: { title, body },
       });
+      setSuccess(true);
       setTitle("");
       setBody("");
-      alert("success Fully create new post");
       setbuttonData("Published");
     }
+    setTimeout(function () {
+      setSuccess(false);
+    }, 3000);
   }
 
-  const filteredPublished = useMemo(() => {
+  const filteredData = useMemo(() => {
     return inputData === ""
       ? state
       : state.filter((item) => {
@@ -81,6 +98,12 @@ function App() {
     <MainContainer>
       <Container>
         {" "}
+        {success && (
+          <SuccessMessage>New Post Added SuucessFully </SuccessMessage>
+        )}
+      </Container>
+
+      <Container>
         <SearchInpuBox
           handleInputChange={handleInputChange}
           handleClear={handleClear}
@@ -95,15 +118,15 @@ function App() {
       </Container>
       <Container>
         {ButtonData === "Published" ? (
-          <Published state={filteredPublished} />
+          <Published state={filteredData} />
         ) : (
           <NewPostForm
             dispatch={dispatch}
             handleTitle={handleTitle}
-            titleData={titleData}
-            bodyData={bodyData}
+            title={title}
+            body={body}
             handleBody={handleBody}
-            handlePost={handlePost}
+            handleCreate={handleCreate}
             validation={validation}
           />
         )}

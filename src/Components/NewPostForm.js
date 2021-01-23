@@ -14,7 +14,8 @@ const Input = styled.input`
   border: 1px solid gainsboro;
   width: 100%;
   height: 30px;
-  margin: 10px 0px;
+  padding: 4px;
+
   &&:focus {
     outline: none;
   }
@@ -26,32 +27,33 @@ const Input = styled.input`
 const Button = styled.div`
   display: flex;
   align-items: center;
-  background-color: green;
+  background-color: #4dab2e;
   color: white;
   height: 35px;
   justify-content: center;
-  border: 1px solid gainsboro;
+  border-radius: 4px;
 `;
 const ValidationText = styled.p`
-  color: red;
+  color: #f18181;
   margin: 0px;
+  font-size: 12px;
 `;
 function NewPostForm(props) {
   return (
     <Main>
-      <Input placeholder="title" onChange={props.handleTitle} />
-      {props.validation && (
-        <ValidationText style={{ color: "red" }}>Input nedded</ValidationText>
-      )}
-      <br />
-      {/* <TextArea placeholder="Body" onChange={props.handlebody} /> */}
+      <Input
+        placeholder="Title"
+        onChange={props.handleTitle}
+        value={props.title}
+      />
 
-      <MarkedDownInput handleBody={props.handleBody} />
-      {props.validation && (
-        <ValidationText style={{ color: "red" }}>Input nedded</ValidationText>
-      )}
+      {props.validation && <ValidationText>Input nedded</ValidationText>}
       <br />
-      <Button onClick={props.handlePost}>Publish</Button>
+      <br />
+      <MarkedDownInput handleBody={props.handleBody} body={props.body} />
+      {props.validation && <ValidationText>Input nedded</ValidationText>}
+
+      <Button onClick={props.handleCreate}>Publish</Button>
     </Main>
   );
 }

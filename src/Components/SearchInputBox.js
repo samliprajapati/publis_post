@@ -15,12 +15,15 @@ const Icons = styled.div`
   align-items: center;
   width: 10%;
   justify-content: center;
+  cursor: pointer;
+  color: #f18181;
 `;
 const SearchIcons = styled.div`
   display: flex;
   align-items: center;
   width: 10%;
   justify-content: center;
+  color: gray;
 `;
 const Input = styled.input`
   border: none;
@@ -35,23 +38,25 @@ const Input = styled.input`
 `;
 function SearchInpuBox(props) {
   return (
-    <Main>
-      <SearchIcons>
-        {" "}
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </SearchIcons>
+    <>
+      <Main>
+        <SearchIcons>
+          {" "}
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </SearchIcons>
 
-      <Input
-        placeholder="Search"
-        onChange={props.handleInputChange}
-        value={props.inputData}
-      />
-      {props.inputData && (
-        <Icons onClick={props.handleClear}>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </Icons>
-      )}
-    </Main>
+        <Input
+          placeholder="Search"
+          onChange={props.handleInputChange}
+          value={props.inputData}
+        />
+        {props.inputData && (
+          <Icons onClick={props.handleClear}>
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </Icons>
+        )}
+      </Main>
+    </>
   );
 }
 export default SearchInpuBox;
