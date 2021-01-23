@@ -25,6 +25,9 @@ const SuccessMessage = styled.p`
   margin: 0px;
   border: 1px solid #4dab2e;
   width: 50%;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const initialState = [];
@@ -64,7 +67,8 @@ function App() {
   }
 
   function handleCreate() {
-    if (title === "" && body === "") {
+    if (title === "" || body === "") {
+      debugger;
       setValidation(true);
     } else {
       debugger;
@@ -76,6 +80,7 @@ function App() {
       setTitle("");
       setBody("");
       setbuttonData("Published");
+      setValidation(false);
     }
     setTimeout(function () {
       setSuccess(false);
